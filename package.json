@@ -1,0 +1,42 @@
+{
+  "name": "fcc-personal-library",
+  "version": "0.0.1",
+  "description": "Fcc project on personal library",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha -u tdd tests"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.0",
+    "mocha": "^6.2.0",
+    "mongodb": "^3.3.2",
+    "uuid": "^3.3.3"
+  },
+  "engines": {
+    "node": "10.15.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avatarfreak/fcc-personal-library.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mocha",
+    "chai"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/avatarfreak/fcc-personal-library/issues"
+  },
+  "homepage": "https://github.com/avatarfreak/fcc-personal-library#readme",
+  "devDependencies": {},
+  "author": "avatarfreak"
+}

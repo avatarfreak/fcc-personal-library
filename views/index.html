@@ -1,0 +1,263 @@
+<html>
+  <head>
+    <title>Project - Personal Library</title>
+    <link
+      id="favicon"
+      rel="icon"
+      href="/public/favicon.ico"
+      type="image/x-icon"
+    />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/public/style.css" />
+  </head>
+  <body class="bg-dark">
+    <div class="container mt-2">
+      <header>
+        <h1 class="text-center text-secondary text-uppercase">
+          Personal Library
+        </h1>
+      </header>
+
+      <div id="sampleui">
+        <h2 class="text-center bg-info text-white">Add New Book</h2>
+        <form id="newBookForm" class="border">
+          <div class="input-group">
+            <input
+              type="text"
+              id="bookTitleToAdd"
+              name="title"
+              placeholder="New Book Title"
+              class="form-control"
+              required
+            />
+            <div class="input-group-append">
+              <button
+                type="submit"
+                value="Submit"
+                id="newBook"
+                class="btn btn-primary"
+              >
+                Submit New Book!
+              </button>
+            </div>
+          </div>
+          <!--end of input-group-->
+        </form>
+        <div id="display"></div>
+        <div id="bookDetail" class="bg-dark p-2 rounded">
+          <p id="detailTitle" class="text-center font-weight-bold">
+            <span class="text-light"
+              >Select a book to see it's details and comments</span
+            >
+          </p>
+          <ol id="detailComments" class="list-group"></ol>
+        </div>
+        <div
+          class="text-center alert alert-warning  border border-info rounded mt-1"
+        >
+          <p class="text-danger font-weight-bold font-italic">
+            DELETE operations cannot be rolled back (undone)
+          </p>
+          <button id="deleteAllBooks" class="btn btn-danger">
+            Delete all books...
+          </button>
+        </div>
+      </div>
+      <!--sampleui-->
+      <div id="sampleposting">
+        <h2 class="text-center">Test API Responses</h2>
+        <div class="row">
+          <div class="col-6 md-col-6 bg-dark rounded text-white card">
+            <p class="text-center font-weight-bold">Test post to /api/books</p>
+            <form action="/api/books" method="post">
+              <div class="form-group">
+                <label for="">Book Title:</label>
+                <input
+                  type="text"
+                  name="title"
+                  value=""
+                  placeholder="Title"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="text-center">
+                <input type="submit" value="Submit" class="btn btn-light" />
+              </div>
+            </form>
+          </div>
+          <!--end of col 1-->
+          <div class="col-6 md-col-6 bg-info rounded text-white card">
+            <p class="text-center font-weight-bold">
+              Test post to /api/books/{bookid}
+            </p>
+            <form action="" method="post" id="commentTest">
+              <div class="form-group">
+                <label>BookId to comment on:</label>
+                <input
+                  type="text"
+                  name="id"
+                  value=""
+                  placeholder="id"
+                  id="idinputtest"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="">Comment</label>
+                <input
+                  type="text"
+                  name="comment"
+                  value=""
+                  placeholder="comment"
+                  class="form-control"
+                />
+              </div>
+              <div class="text-center">
+                <input type="submit" value="Submit" class="btn btn-light" />
+              </div>
+            </form>
+          </div>
+          <!--end of col 2-->
+        </div>
+        <!--end of row-->
+      </div>
+      <!--end of sampling posting-->
+
+      <div id="userstories">
+        <h2 class="text-light">User stories:</h2>
+        <ol class="list-group text-secondary">
+          <li class="list-group-item active">
+            Nothing from my website will be cached in my client as a security
+            measure.
+          </li>
+          <li class="list-group-item active">
+            I will see that the site is powered by 'PHP 4.2.0' even though it
+            isn't as a security measure.
+          </li>
+          <li class="list-group-item">
+            I can <b>post</b> a <code>title</code> to /api/books to add a book
+            and returned will be the object with the <code>title</code> and a
+            unique <code>_id</code>.
+          </li>
+          <li class="list-group-item">
+            I can <b>get</b> /api/books to retrieve an aray of all books
+            containing <code>title</code>, <code>_id</code>, &
+            <code>commentcount</code>.
+          </li>
+          <li class="list-group-item">
+            I can <b>get</b> /api/books/{_id} to retrieve a single object of a
+            book containing <code>title</code>, <code>_id</code>, & an array of
+            <code>comments</code> (empty array if no comments present).
+          </li>
+          <li class="list-group-item">
+            I can <b>post</b> a <code>comment</code> to /api/books/{_id} to add
+            a comment to a book and returned will be the books object similar to
+            <b>get</b> /api/books/{_id}.
+          </li>
+          <li class="list-group-item">
+            I can <b>delete</b> /api/books/{_id} to delete a book from the
+            collection. Returned will be 'delete successful' if successful.
+          </li>
+          <li class="list-group-item">
+            If I try to request a book that doesn't exist I will get a 'no book
+            exists' message.
+          </li>
+          <li class="list-group-item">
+            I can send a <b>delete</b> request to /api/books to delete all books
+            in the database. Returned will be 'complete delete successful' if
+            successful.
+          </li>
+          <li class="list-group-item">
+            All 6 functional tests required are complete and passing.
+          </li>
+        </ol>
+        <br />
+        <img
+          class=""
+          src="https://cdn.gomix.com/d7932c52-287f-4dae-b175-631fef453000%2FScreen%20Shot%202016-12-16%20at%201.35.56%20AM.png"
+        />
+      </div>
+      <!--modal-->
+      <div class="modal" tabindex="-1" role="dialog" id="book-library">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="modal-title font-weight-bold">
+                Please see the information below
+              </div>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center text-danger">
+              <p id="dataResult" class="font-weigth-bold text-uppercase"></p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--end of modal-->
+      <footer>
+        <p class="text-center text-light">
+          <small>
+            N2D House © 2019. All rights reserved, designed and developed by
+            Dave
+          </small>
+        </p>
+      </footer>
+    </div>
+    <!--end of container -->
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="/public/client.js"></script>
+    <script>
+      /*
+       *  For #sampleposting to update form action url to test inputs book id
+       */
+      $(function() {
+        $("#commentTest").submit(function() {
+          var id = $("#idinputtest").val();
+          $(this).attr("action", "/api/books/" + id);
+        });
+      });
+    </script>
+  </body>
+</html>
